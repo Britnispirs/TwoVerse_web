@@ -1,0 +1,69 @@
+/* CSS Variables & Design System for TwoVerse */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+
+:root {
+  /* Dark Theme Palette (Default) */
+  --bg-gradient-start: #0f0c20;
+  --bg-gradient-end: #1d102e;
+  --bg-pattern-color: rgba(255, 107, 139, 0.04);
+  
+  --surface-glass: rgba(30, 22, 54, 0.65);
+  --surface-glass-border: rgba(255, 255, 255, 0.12);
+  --surface-glass-hover: rgba(45, 34, 78, 0.75);
+  
+  --card-bg: rgba(26, 20, 48, 0.85);
+  --card-border: rgba(255, 107, 139, 0.2);
+  
+  --text-primary: #ffffff;
+  --text-secondary: #c3b8e0;
+  --text-muted: #8b7fa9;
+  
+  /* Primary & Accent Colors */
+  --primary-rose: #ff6b8b;
+  --primary-rose-glow: rgba(ff, 107, 139, 0.4);
+  --accent-purple: #9b51e0;
+  --accent-gold: #ffb830;
+  --accent-cyan: #2ed573;
+  
+  /* Gradients */
+  --gradient-romantic: linear-gradient(135deg, #ff6b8b 0%, #9b51e0 100%);
+  --gradient-gold: linear-gradient(135deg, #ffb830 0%, #ff4757 100%);
+  --gradient-glow: radial-gradient(circle at 50% 0%, rgba(255, 107, 139, 0.25) 0%, transparent 70%);
+
+  /* Typography */
+  --font-main: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-display: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+  
+  /* Dimensions & Shapes */
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 24px;
+  --radius-full: 9999px;
+  
+  --shadow-glow: 0 10px 30px rgba(255, 107, 139, 0.25);
+  --shadow-glass: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  --backdrop-blur: blur(16px);
+  
+  --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Light Theme Overrides */
+body.light-theme {
+  --bg-gradient-start: #fff5f8;
+  --bg-gradient-end: #f0e6ff;
+  --bg-pattern-color: rgba(255, 107, 139, 0.08);
+
+  --surface-glass: rgba(255, 255, 255, 0.75);
+  --surface-glass-border: rgba(255, 107, 139, 0.2);
+  --surface-glass-hover: rgba(255, 255, 255, 0.9);
+
+  --card-bg: rgba(255, 255, 255, 0.9);
+  --card-border: rgba(255, 107, 139, 0.3);
+
+  --text-primary: #1f1435;
+  --text-secondary: #574675;
+  --text-muted: #8d7da8;
+
+  --shadow-glass: 0 8px 32px 0 rgba(155, 81, 224, 0.12);
+}

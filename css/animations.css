@@ -1,0 +1,75 @@
+/* Animations & Keyframes for TwoVerse */
+
+@keyframes pulse-heart {
+  0% { transform: scale(1); }
+  15% { transform: scale(1.15); }
+  30% { transform: scale(1); }
+  45% { transform: scale(1.15); }
+  60% { transform: scale(1); }
+  100% { transform: scale(1); }
+}
+
+@keyframes btn-pulse-anim {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(255, 107, 139, 0.6);
+  }
+  50% {
+    box-shadow: 0 0 0 14px rgba(255, 107, 139, 0);
+  }
+}
+
+@keyframes float-slow {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.4s ease forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.spinning {
+  animation: slotSpin 0.1s linear infinite;
+  filter: blur(1px);
+}
+
+@keyframes slotSpin {
+  0% { transform: translateY(-4px); }
+  50% { transform: translateY(4px); }
+  100% { transform: translateY(-4px); }
+}
+
+.card-changing {
+  transform: scale(0.95);
+  opacity: 0.5;
+  transition: transform 0.2s, opacity 0.2s;
+}
+
+.modal-active {
+  animation: modalPop 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@keyframes modalPop {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

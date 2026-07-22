@@ -1,0 +1,218 @@
+/* Base Layout & Global Styles for TwoVerse */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  min-height: 100vh;
+  font-family: var(--font-main);
+  background: var(--bg-gradient-start);
+  background: radial-gradient(circle at 50% -20%, rgba(255, 107, 139, 0.2), transparent 50%),
+              linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
+  color: var(--text-primary);
+  line-height: 1.5;
+  overflow-x: hidden;
+  transition: background 0.5s ease, color 0.5s ease;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: radial-gradient(var(--bg-pattern-color) 1px, transparent 1px);
+  background-size: 24px 24px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+#app {
+  position: relative;
+  z-index: 1;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 20px 16px 60px;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Header Styles */
+.header-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 24px;
+  margin-bottom: 24px;
+  background: var(--surface-glass);
+  backdrop-filter: var(--backdrop-blur);
+  border: 1px solid var(--surface-glass-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-glass);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo-heart {
+  font-size: 1.8rem;
+  animation: pulse-heart 2s infinite ease-in-out;
+}
+
+.brand-title {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  background: var(--gradient-romantic);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: -0.5px;
+}
+
+.couple-names-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 107, 139, 0.15);
+  border: 1px solid rgba(255, 107, 139, 0.3);
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.couple-names-badge:hover {
+  background: rgba(255, 107, 139, 0.25);
+  transform: translateY(-1px);
+}
+
+.header-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.icon-btn {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--surface-glass-border);
+  color: var(--text-primary);
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.icon-btn:hover {
+  background: rgba(255, 107, 139, 0.2);
+  transform: scale(1.05);
+}
+
+/* Navigation Tabs */
+.nav-tab-bar {
+  display: flex;
+  gap: 8px;
+  background: var(--surface-glass);
+  backdrop-filter: var(--backdrop-blur);
+  border: 1px solid var(--surface-glass-border);
+  padding: 8px;
+  border-radius: var(--radius-lg);
+  margin-bottom: 30px;
+  box-shadow: var(--shadow-glass);
+  overflow-x: auto;
+}
+
+.nav-item {
+  flex: 1;
+  min-width: 140px;
+  padding: 12px 16px;
+  border: none;
+  background: transparent;
+  color: var(--text-secondary);
+  font-family: var(--font-main);
+  font-size: 0.95rem;
+  font-weight: 600;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: var(--transition-normal);
+  white-space: nowrap;
+}
+
+.nav-item:hover {
+  color: var(--text-primary);
+  background: var(--surface-glass-hover);
+}
+
+.nav-item.active {
+  background: var(--gradient-romantic);
+  color: #ffffff;
+  box-shadow: var(--shadow-glow);
+}
+
+/* Main Tab Container */
+.main-content {
+  flex: 1;
+}
+
+.tab-section {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* Subtitle & Headings */
+h2 {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.subtitle {
+  color: var(--text-muted);
+  font-size: 1rem;
+}
+
+.header-badge {
+  display: inline-block;
+  background: rgba(255, 107, 139, 0.15);
+  color: var(--primary-rose);
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  font-size: 0.8rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Footer */
+.footer-bar {
+  margin-top: 40px;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  padding-top: 20px;
+  border-top: 1px solid var(--surface-glass-border);
+}

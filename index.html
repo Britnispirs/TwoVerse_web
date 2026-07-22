@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="TwoVerse - Интерактивный портал для двоих: Рандомайзер свиданий, Совместный Bucket List, Карточки Q&A и Мини-игры для пар.">
+  <meta name="theme-color" content="#0f0c20">
+  <title>TwoVerse | Пространство для двоих & Рандомайзер свиданий</title>
+
+  <!-- Google Fonts & Stylesheets -->
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/animations.css">
+</head>
+<body>
+
+  <div id="app">
+    <!-- Header -->
+    <header class="header-bar">
+      <div class="brand">
+        <span class="logo-heart">💖</span>
+        <span class="brand-title">TwoVerse</span>
+      </div>
+
+      <div class="couple-names-badge" id="btn-edit-profile" title="Нажмите, чтобы изменить имена">
+        <span id="header-p1">Алекс</span> & <span id="header-p2">Саша</span> ✨
+      </div>
+
+      <div class="header-controls">
+        <button class="icon-btn" id="btn-toggle-sound" title="Включить / Выключить звук">🔊</button>
+        <button class="icon-btn" id="btn-toggle-theme" title="Смена темы (Светлая / Тёмная)">🌙</button>
+      </div>
+    </header>
+
+    <!-- Main Navigation Bar -->
+    <nav class="nav-tab-bar" role="tablist">
+      <button class="nav-item active" data-tab="randomizer" role="tab" id="tab-btn-randomizer">
+        <span>🎲</span> Рандомайзер свиданий
+      </button>
+      <button class="nav-item" data-tab="bucket" role="tab" id="tab-btn-bucket">
+        <span>🎯</span> Bucket List
+      </button>
+      <button class="nav-item" data-tab="qa" role="tab" id="tab-btn-qa">
+        <span>💬</span> Карточки Q&A
+      </button>
+      <button class="nav-item" data-tab="games" role="tab" id="tab-btn-games">
+        <span>🎮</span> Игры & Квизы
+      </button>
+    </nav>
+
+    <!-- App Content Sections -->
+    <main class="main-content">
+      <!-- Section 1: Date Randomizer -->
+      <section class="tab-section fade-in" id="tab-content-randomizer">
+        <!-- Rendered by dateRandomizer.js -->
+      </section>
+
+      <!-- Section 2: Shared Bucket List -->
+      <section class="tab-section hidden" id="tab-content-bucket">
+        <!-- Rendered by bucketList.js -->
+      </section>
+
+      <!-- Section 3: Q&A Cards -->
+      <section class="tab-section hidden" id="tab-content-qa">
+        <!-- Rendered by qaCards.js -->
+      </section>
+
+      <!-- Section 4: Mini-Games -->
+      <section class="tab-section hidden" id="tab-content-games">
+        <!-- Rendered by coupleGames.js -->
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer-bar">
+      <p>Made with ❤️ for couples • TwoVerse &copy; 2026. Сохраняйте лучшие моменты вместе!</p>
+    </footer>
+  </div>
+
+  <!-- Modals -->
+
+  <!-- 1. Profile Edit Modal -->
+  <div class="modal hidden" id="modal-profile">
+    <div class="modal-backdrop"></div>
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>💑 Наш профиль</h3>
+        <button class="modal-close">&times;</button>
+      </div>
+      <form class="modal-form" id="form-profile">
+        <div class="form-group">
+          <label for="input-p1">Имя первого партнера:</label>
+          <input type="text" id="input-p1" class="text-input" required placeholder="Например: Алекс">
+        </div>
+        <div class="form-group">
+          <label for="input-p2">Имя второго партнера:</label>
+          <input type="text" id="input-p2" class="text-input" required placeholder="Например: Саша">
+        </div>
+        <div class="form-group">
+          <label for="input-anniversary">Дата вашей первой встречи или годовщины:</label>
+          <input type="date" id="input-anniversary" class="text-input">
+        </div>
+        <button type="submit" class="btn btn-gradient">Сохранить изменения</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- 2. Custom Date Idea Modal -->
+  <div class="modal hidden" id="modal-custom-date">
+    <div class="modal-backdrop"></div>
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>✨ Добавить свою идею свидания</h3>
+        <button class="modal-close">&times;</button>
+      </div>
+      <form class="modal-form" id="form-custom-date">
+        <div class="form-group">
+          <label for="input-date-title">Название свидания:</label>
+          <input type="text" id="input-date-title" class="text-input" required placeholder="Например: Ночной поход за мороженым">
+        </div>
+        <div class="form-group">
+          <label for="input-date-category">Категория:</label>
+          <select id="input-date-category" class="select-input">
+            <option value="home">🏠 Домашний уют</option>
+            <option value="outdoor">🌳 На свежем воздухе</option>
+            <option value="romantic">🕯️ Романтика</option>
+            <option value="active">🧗‍♂️ Активный отдых</option>
+            <option value="creative">🎨 Творчество</option>
+            <option value="unusual">🚀 Необычное</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="input-date-duration">Длительность:</label>
+          <select id="input-date-duration" class="select-input">
+            <option value="short">⏱️ 1 час</option>
+            <option value="medium">⏱️ 2-3 часа</option>
+            <option value="long">⏱️ Весь день</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="input-date-budget">Бюджет:</label>
+          <select id="input-date-budget" class="select-input">
+            <option value="free">✨ Бесплатно</option>
+            <option value="low">💰 Доступно</option>
+            <option value="medium">💰💰 Средне</option>
+            <option value="high">💰💰💰 Премиум</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="input-date-icon">Иконка / Эмодзи:</label>
+          <input type="text" id="input-date-icon" class="text-input" placeholder="🍦">
+        </div>
+        <div class="form-group">
+          <label for="input-date-desc">Описание или детали:</label>
+          <textarea id="input-date-desc" class="textarea-input" rows="3" placeholder="Опишите, как лучше организовать это свидание..."></textarea>
+        </div>
+        <button type="submit" class="btn btn-gradient">Добавить в генератор</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- 3. Add Bucket Goal Modal -->
+  <div class="modal hidden" id="modal-add-bucket">
+    <div class="modal-backdrop"></div>
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>🎯 Добавить цель в Bucket List</h3>
+        <button class="modal-close">&times;</button>
+      </div>
+      <form class="modal-form" id="form-add-bucket">
+        <div class="form-group">
+          <label for="input-bucket-title">Совместное желание / цель:</label>
+          <input type="text" id="input-bucket-title" class="text-input" required placeholder="Например: Побывать на Бали">
+        </div>
+        <div class="form-group">
+          <label for="input-bucket-category">Сфера:</label>
+          <select id="input-bucket-category" class="select-input">
+            <option value="travel">✈️ Путешествия</option>
+            <option value="cozy">🏡 Уютные цели</option>
+            <option value="creative">🎨 Творчество & Хобби</option>
+            <option value="adventure">🔥 Безумства & Приключения</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="input-bucket-date">Желаемая дата реализации:</label>
+          <input type="date" id="input-bucket-date" class="text-input">
+        </div>
+        <div class="form-group">
+          <label for="input-bucket-icon">Эмодзи иконка:</label>
+          <input type="text" id="input-bucket-icon" class="text-input" placeholder="🏝️">
+        </div>
+        <button type="submit" class="btn btn-gradient">Добавить цель</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Application Entry Script -->
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
