@@ -10,7 +10,9 @@ const STORAGE_KEYS = {
   FAVORITE_DATES: 'twoverse_favorite_dates',
   FAVORITE_QUESTIONS: 'twoverse_favorite_questions',
   SETTINGS: 'twoverse_settings',
-  GAME_STATS: 'twoverse_game_stats'
+  GAME_STATS: 'twoverse_game_stats',
+  USERS: 'twoverse_users',
+  CURRENT_USER: 'twoverse_current_user'
 };
 
 export const Storage = {
@@ -174,5 +176,188 @@ export const Storage = {
       console.error('Import error:', e);
       return false;
     }
+  },
+
+  // ──────── User Authentication ────────
+
+  // Simple hash for client-side password storage (NOT secure for production)
+  _hashPassword(password) {
+    let hash = 0;
+    for (let i = 0; i < password.length; i++) {
+      const char = password.charCodeAt(i);
+      hash = ((hash << 5) - hash) + char;
+      hash = hash & hash; // Convert to 32bit integer
+    }
+    return 'h_' + Math.abs(hash).toString(36);
+  },
+
+  // Get all registered users
+  _getUsers() {
+    try {
+      const data = localStorage.getItem(STORAGE_KEYS.USERS);
+      return data ? JSON.parse(data) : [];
+    } catch (e) {
+      return [];
+    }
+  },
+
+  // Save users array
+  _saveUsers(users) {
+    try {
+      localStorage.setItem(STORAGE_KEYS.USERS, JSON.stringify(users));
+    } catch (e) {
+      console.error('Error saving users:', e);
+    }
+  },
+
+  /**
+   * Register a new user
+   * @param {Object} userData - { username, email, password, avatar, partnerName }
+   * @returns {{ success: boolean, error?: string }}
+   */
+  registerUser(userData) {
+    const { username, email, password, avatar, partnerName } = userData;
+
+    if (!username || !password) {
+      return { success: false, error: 'Имя пользователя и пароль обязательны' };
+    }
+    if (password.length < 4) {
+      return { success: false, error: 'Пароль должен быть минимум 4 символа' };
+    }
+
+    const users = this._getUsers();
+
+    // Check for duplicate username or email
+    const existingUser = users.find(
+      u => u.username.toLowerCase() === username.toLowerCase() ||
+        (email && u.email && u.email.toLowerCase() === email.toLowerCase())
+    );
+    if (existingUser) {
+      return { success: false, error: 'Пользователь с таким именем или email уже существует' };
+    }
+
+    const newUser = {
+      id: 'user_' + Date.now(),
+      username: username.trim(),
+      email: (email || '').trim(),
+      passwordHash: this._hashPassword(password),
+      avatar: avatar || '😊',
+      partnerName: (partnerName || '').trim(),
+      createdAt: new Date().toISOString()
+    };
+
+    users.push(newUser);
+    this._saveUsers(users);
+
+    // Auto-login after registration
+    this._setCurrentUser(newUser);
+
+    // Update couple profile with the registered user's data
+    const profile = this.getProfile();
+    profile.partner1 = newUser.username;
+    if (newUser.partnerName) {
+      profile.partner2 = newUser.partnerName;
+    }
+    this.saveProfile(profile);
+
+    return { success: true, user: newUser };
+  },
+
+  /**
+   * Login user by username/email and password
+   * @param {string} identifier - username or email
+   * @param {string} password
+   * @returns {{ success: boolean, error?: string, user?: Object }}
+   */
+  loginUser(identifier, password) {
+    if (!identifier || !password) {
+      return { success: false, error: 'Введите имя пользователя и пароль' };
+    }
+
+    const users = this._getUsers();
+    const passwordHash = this._hashPassword(password);
+    const id = identifier.toLowerCase().trim();
+
+    const user = users.find(
+      u => (u.username.toLowerCase() === id || (u.email && u.email.toLowerCase() === id)) &&
+        u.passwordHash === passwordHash
+    );
+
+    if (!user) {
+      return { success: false, error: 'Неверное имя пользователя или пароль' };
+    }
+
+    this._setCurrentUser(user);
+
+    // Restore profile names from user data
+    const profile = this.getProfile();
+    profile.partner1 = user.username;
+    if (user.partnerName) {
+      profile.partner2 = user.partnerName;
+    }
+    this.saveProfile(profile);
+
+    return { success: true, user };
+  },
+
+  /**
+   * Logout current user
+   */
+  logoutUser() {
+    try {
+      localStorage.removeItem(STORAGE_KEYS.CURRENT_USER);
+    } catch (e) {}
+  },
+
+  /**
+   * Get current logged-in user or null
+   * @returns {Object|null}
+   */
+  getCurrentUser() {
+    try {
+      const data = localStorage.getItem(STORAGE_KEYS.CURRENT_USER);
+      return data ? JSON.parse(data) : null;
+    } catch (e) {
+      return null;
+    }
+  },
+
+  /**
+   * Set current user session
+   * @param {Object} user
+   */
+  _setCurrentUser(user) {
+    try {
+      // Store without password hash for safety
+      const safeUser = { ...user };
+      delete safeUser.passwordHash;
+      localStorage.setItem(STORAGE_KEYS.CURRENT_USER, JSON.stringify(safeUser));
+    } catch (e) {}
+  },
+
+  /**
+   * Update current user's avatar or partner name
+   * @param {Object} updates - { avatar?, partnerName? }
+   */
+  updateCurrentUser(updates) {
+    const currentUser = this.getCurrentUser();
+    if (!currentUser) return false;
+
+    const users = this._getUsers();
+    const idx = users.findIndex(u => u.id === currentUser.id);
+    if (idx === -1) return false;
+
+    if (updates.avatar) {
+      users[idx].avatar = updates.avatar;
+      currentUser.avatar = updates.avatar;
+    }
+    if (updates.partnerName !== undefined) {
+      users[idx].partnerName = updates.partnerName;
+      currentUser.partnerName = updates.partnerName;
+    }
+
+    this._saveUsers(users);
+    this._setCurrentUser(currentUser);
+    return true;
   }
 };

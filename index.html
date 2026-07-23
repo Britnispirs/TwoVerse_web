@@ -28,6 +28,10 @@
       </div>
 
       <div class="header-controls">
+        <button class="btn btn-donate-header" id="btn-donate-header" title="Поддержать проект">💖 Поддержать</button>
+        <button class="icon-btn user-auth-btn" id="btn-user-auth" title="Войти / Регистрация">
+          <span class="user-avatar-mini" id="user-avatar-mini">👤</span>
+        </button>
         <button class="icon-btn" id="btn-toggle-sound" title="Включить / Выключить звук">🔊</button>
         <button class="icon-btn" id="btn-toggle-theme" title="Смена темы (Светлая / Тёмная)">🌙</button>
       </div>
@@ -75,6 +79,9 @@
     <!-- Footer -->
     <footer class="footer-bar">
       <p>Made with ❤️ for couples • TwoVerse &copy; 2026. Сохраняйте лучшие моменты вместе!</p>
+      <a href="https://dalink.to/vosem15" target="_blank" rel="noopener noreferrer" class="footer-donate-link" id="footer-donate-link">
+        ☕ Поддержать авторов проекта (Донат)
+      </a>
     </footer>
   </div>
 
@@ -192,6 +199,118 @@
         </div>
         <button type="submit" class="btn btn-gradient">Добавить цель</button>
       </form>
+    </div>
+  </div>
+
+  <!-- 4. Auth Modal (Login / Register) -->
+  <div class="modal hidden" id="modal-auth">
+    <div class="modal-backdrop"></div>
+    <div class="modal-content modal-content-auth">
+      <div class="modal-header">
+        <h3 id="auth-modal-title">🔑 Вход в аккаунт</h3>
+        <button class="modal-close">&times;</button>
+      </div>
+      <div class="auth-tabs">
+        <button class="auth-tab active" data-auth-tab="login" id="auth-tab-login">🔑 Вход</button>
+        <button class="auth-tab" data-auth-tab="register" id="auth-tab-register">✨ Регистрация</button>
+      </div>
+
+      <!-- Login Form -->
+      <form class="modal-form auth-form" id="form-login">
+        <div class="form-group">
+          <label for="login-identifier">Логин или Email:</label>
+          <input type="text" id="login-identifier" class="text-input" required placeholder="Ваш логин или email">
+        </div>
+        <div class="form-group">
+          <label for="login-password">Пароль:</label>
+          <input type="password" id="login-password" class="text-input" required placeholder="Ваш пароль">
+        </div>
+        <div class="auth-error hidden" id="login-error"></div>
+        <button type="submit" class="btn btn-gradient btn-lg">Войти</button>
+      </form>
+
+      <!-- Register Form -->
+      <form class="modal-form auth-form hidden" id="form-register">
+        <div class="form-group">
+          <label for="reg-username">Имя пользователя:</label>
+          <input type="text" id="reg-username" class="text-input" required placeholder="Придумайте логин">
+        </div>
+        <div class="form-group">
+          <label for="reg-email">Email (необязательно):</label>
+          <input type="email" id="reg-email" class="text-input" placeholder="your@email.com">
+        </div>
+        <div class="form-group">
+          <label for="reg-password">Пароль (мин. 4 символа):</label>
+          <input type="password" id="reg-password" class="text-input" required placeholder="Придумайте пароль" minlength="4">
+        </div>
+        <div class="form-group">
+          <label for="reg-partner">Имя вашего партнёра:</label>
+          <input type="text" id="reg-partner" class="text-input" placeholder="Имя вашей половинки">
+        </div>
+        <div class="form-group">
+          <label>Выберите аватарку:</label>
+          <div class="avatar-picker" id="avatar-picker">
+            <button type="button" class="avatar-option active" data-avatar="😊">😊</button>
+            <button type="button" class="avatar-option" data-avatar="😎">😎</button>
+            <button type="button" class="avatar-option" data-avatar="🥰">🥰</button>
+            <button type="button" class="avatar-option" data-avatar="😻">😻</button>
+            <button type="button" class="avatar-option" data-avatar="🦊">🦊</button>
+            <button type="button" class="avatar-option" data-avatar="🐱">🐱</button>
+            <button type="button" class="avatar-option" data-avatar="🌸">🌸</button>
+            <button type="button" class="avatar-option" data-avatar="⭐">⭐</button>
+            <button type="button" class="avatar-option" data-avatar="🔥">🔥</button>
+            <button type="button" class="avatar-option" data-avatar="💎">💎</button>
+            <button type="button" class="avatar-option" data-avatar="🎀">🎀</button>
+            <button type="button" class="avatar-option" data-avatar="🌈">🌈</button>
+          </div>
+        </div>
+        <div class="auth-error hidden" id="register-error"></div>
+        <button type="submit" class="btn btn-gradient btn-lg">Создать аккаунт</button>
+      </form>
+
+      <!-- Logged-in user panel (shown when authenticated) -->
+      <div class="user-profile-panel hidden" id="user-profile-panel">
+        <div class="user-profile-card">
+          <span class="user-profile-avatar" id="profile-avatar">😊</span>
+          <div class="user-profile-info">
+            <span class="user-profile-name" id="profile-username">Пользователь</span>
+            <span class="user-profile-email" id="profile-email"></span>
+          </div>
+        </div>
+        <div class="user-profile-meta">
+          <span>🗓️ Зарегистрирован: <span id="profile-created"></span></span>
+        </div>
+        <button class="btn btn-outline btn-lg" id="btn-logout">🚪 Выйти из аккаунта</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. Donate Modal -->
+  <div class="modal hidden" id="modal-donate">
+    <div class="modal-backdrop"></div>
+    <div class="modal-content modal-content-donate">
+      <div class="modal-header">
+        <h3>💖 Поддержать проект TwoVerse</h3>
+        <button class="modal-close">&times;</button>
+      </div>
+      <div class="donate-body">
+        <div class="donate-heart-icon">💝</div>
+        <p class="donate-text">
+          Мы создаём <strong>TwoVerse</strong> с любовью и заботой о парах. Ваша поддержка помогает нам развивать проект,
+          добавлять новые функции и дарить радость влюблённым по всему миру!
+        </p>
+        <div class="donate-amounts">
+          <span class="donate-tag">☕ На кофе</span>
+          <span class="donate-tag">🍕 На пиццу</span>
+          <span class="donate-tag">🚀 На развитие</span>
+        </div>
+        <a href="https://dalink.to/vosem15" target="_blank" rel="noopener noreferrer" class="btn btn-gradient btn-lg btn-donate-main" id="btn-donate-main">
+          💖 Поддержать через Dalink
+        </a>
+        <p class="donate-note">
+          Каждый донат — это шаг к новым крутым фичам! Спасибо, что вы с нами ❤️
+        </p>
+      </div>
     </div>
   </div>
 

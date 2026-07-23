@@ -334,5 +334,283 @@ export const PRESET_DATE_IDEAS = [
     budget: 'medium',
     budgetName: '💰💰 Средне',
     icon: '🔮'
+  },
+
+  // 🌟 Новые идеи из подборки Дзен «ТОП 50 лучших идей для свиданий»
+
+  // 🌳 На свежем воздухе
+  {
+    id: 'date-28',
+    title: 'Пикник под звёздами с телескопом',
+    description: 'Расстелите плед за городом, возьмите термос с какао и портативный телескоп. Ищите созвездия и загадывайте желания на падающие звёзды.',
+    category: 'outdoor',
+    categoryName: 'На свежем воздухе',
+    duration: 'medium',
+    durationName: '2-3 часа',
+    budget: 'low',
+    budgetName: '💰 Доступно',
+    icon: '🔭'
+  },
+  {
+    id: 'date-29',
+    title: 'Велопрогулка по незнакомым улицам',
+    description: 'Арендуйте велосипеды или самокаты и отправьтесь исследовать районы, где раньше не были. Останавливайтесь в случайных кафе.',
+    category: 'outdoor',
+    categoryName: 'На свежем воздухе',
+    duration: 'medium',
+    durationName: '2-3 часа',
+    budget: 'low',
+    budgetName: '💰 Доступно',
+    icon: '🚲'
+  },
+  {
+    id: 'date-30',
+    title: 'Посещение приюта для животных',
+    description: 'Проведите день волонтёрами: погуляйте с собаками, покормите котиков и подарите тепло тем, кто в нём нуждается.',
+    category: 'outdoor',
+    categoryName: 'На свежем воздухе',
+    duration: 'medium',
+    durationName: '2-3 часа',
+    budget: 'free',
+    budgetName: '✨ Бесплатно',
+    icon: '🐾'
+  },
+  {
+    id: 'date-31',
+    title: 'Фотопрогулка на плёночный фотоаппарат',
+    description: 'Купите одноразовую плёнку и фотографируйте друг друга весь день. Проявите через неделю — сюрприз гарантирован!',
+    category: 'outdoor',
+    categoryName: 'На свежем воздухе',
+    duration: 'long',
+    durationName: 'Весь день',
+    budget: 'low',
+    budgetName: '💰 Доступно',
+    icon: '📸'
+  },
+
+  // 🕯️ Романтика
+  {
+    id: 'date-32',
+    title: 'Ночное купание с неоновыми браслетами',
+    description: 'Наденьте светящиеся браслеты и ожерелья, бросьте неоновые палочки в воду и устройте волшебное ночное купание.',
+    category: 'romantic',
+    categoryName: 'Романтика',
+    duration: 'medium',
+    durationName: '2 часа',
+    budget: 'low',
+    budgetName: '💰 Доступно',
+    icon: '🌊'
+  },
+  {
+    id: 'date-33',
+    title: 'Вечер джазовой музыки в баре',
+    description: 'Оденьтесь элегантно и отправьтесь в атмосферный джаз-бар с живой музыкой, приглушённым светом и авторскими коктейлями.',
+    category: 'romantic',
+    categoryName: 'Романтика',
+    duration: 'medium',
+    durationName: '2-3 часа',
+    budget: 'medium',
+    budgetName: '💰💰 Средне',
+    icon: '🎷'
+  },
+  {
+    id: 'date-34',
+    title: 'Романтический ужин при свечах на балконе',
+    description: 'Украсьте балкон гирляндами и свечами, приготовьте итальянское блюдо и устройте ужин с видом на вечерний город.',
+    category: 'romantic',
+    categoryName: 'Романтика',
+    duration: 'medium',
+    durationName: '2 часа',
+    budget: 'low',
+    budgetName: '💰 Доступно',
+    icon: '🕯️'
+  },
+  {
+    id: 'date-35',
+    title: 'Танцевальный мастер-класс для двоих',
+    description: 'Запишитесь на парный урок танго, бачаты или сальсы. Неловкие моменты — лучшие воспоминания!',
+    category: 'romantic',
+    categoryName: 'Романтика',
+    duration: 'short',
+    durationName: '1-2 часа',
+    budget: 'medium',
+    budgetName: '💰💰 Средне',
+    icon: '💃'
+  },
+
+  // 🧗‍♂️ Активный отдых
+  {
+    id: 'date-36',
+    title: 'Прыжки на батутах & Поролоновый баттл',
+    description: 'Устройте безумное соревнование: кто выше прыгнет, круче кувыркнётся и эпичнее нырнёт в поролоновую яму!',
+    category: 'active',
+    categoryName: 'Активный отдых',
+    duration: 'short',
+    durationName: '1-2 часа',
+    budget: 'medium',
+    budgetName: '💰💰 Средне',
+    icon: '🤸'
+  },
+  {
+    id: 'date-37',
+    title: 'Полёт в аэротрубе',
+    description: 'Ощутите невесомость и свободный полёт без прыжка с парашютом! Незабываемый адреналин для двоих.',
+    category: 'active',
+    categoryName: 'Активный отдых',
+    duration: 'short',
+    durationName: '1 час',
+    budget: 'high',
+    budgetName: '💰💰💰 Премиум',
+    icon: '🪂'
+  },
+  {
+    id: 'date-38',
+    title: 'Каякинг или сапбординг на закате',
+    description: 'Гребите вместе по спокойной воде навстречу закату. Тишина, вода и золотое небо — рецепт идеального вечера.',
+    category: 'active',
+    categoryName: 'Активный отдых',
+    duration: 'medium',
+    durationName: '2 часа',
+    budget: 'medium',
+    budgetName: '💰💰 Средне',
+    icon: '🛶'
+  },
+  {
+    id: 'date-39',
+    title: 'Роллер-дискотека или каток',
+    description: 'Возьмите ролики или коньки и зажгите на танцполе/катке под ретро-музыку, держась за руки на виражах.',
+    category: 'active',
+    categoryName: 'Активный отдых',
+    duration: 'medium',
+    durationName: '2 часа',
+    budget: 'low',
+    budgetName: '💰 Доступно',
+    icon: '⛸️'
+  },
+
+  // 🎨 Творчество
+  {
+    id: 'date-40',
+    title: 'Мастер-класс по гончарному делу',
+    description: 'Почувствуйте себя героями фильма «Привидение»: лепите кружки и тарелки на гончарном круге для друг друга.',
+    category: 'creative',
+    categoryName: 'Творчество',
+    duration: 'medium',
+    durationName: '2 часа',
+    budget: 'medium',
+    budgetName: '💰💰 Средне',
+    icon: '🏺'
+  },
+  {
+    id: 'date-41',
+    title: 'Написать и записать совместную песню',
+    description: 'Придумайте текст «вашей» песни, подберите аккорды или бит и запишите демо на телефон — будет хит!',
+    category: 'creative',
+    categoryName: 'Творчество',
+    duration: 'medium',
+    durationName: '2-3 часа',
+    budget: 'free',
+    budgetName: '✨ Бесплатно',
+    icon: '🎵'
+  },
+  {
+    id: 'date-42',
+    title: 'DIY-подарки друг другу за 1 час',
+    description: 'Засеките таймер и за 60 минут создайте hand-made подарок партнёру из подручных материалов. Обменяйтесь результатами!',
+    category: 'creative',
+    categoryName: 'Творчество',
+    duration: 'short',
+    durationName: '1-2 часа',
+    budget: 'free',
+    budgetName: '✨ Бесплатно',
+    icon: '🎁'
+  },
+  {
+    id: 'date-43',
+    title: 'Совместный фотоальбом или скрапбукинг',
+    description: 'Распечатайте любимые совместные фото и оформите красивый альбом с наклейками, вырезками и подписями.',
+    category: 'creative',
+    categoryName: 'Творчество',
+    duration: 'medium',
+    durationName: '2-3 часа',
+    budget: 'low',
+    budgetName: '💰 Доступно',
+    icon: '📖'
+  },
+
+  // 🚀 Необычное & Приключения
+  {
+    id: 'date-44',
+    title: 'Спонтанная поездка на электричке в неизвестный город',
+    description: 'Придите на вокзал и сядьте на ближайшую электричку. Исследуйте незнакомый городок, пробуйте местную еду.',
+    category: 'unusual',
+    categoryName: 'Необычное',
+    duration: 'long',
+    durationName: 'Весь день',
+    budget: 'low',
+    budgetName: '💰 Доступно',
+    icon: '🚂'
+  },
+  {
+    id: 'date-45',
+    title: 'День «Да» — говорите только «да»',
+    description: 'Целый день соглашайтесь на все предложения друг друга (в разумных пределах). Неожиданные приключения обеспечены!',
+    category: 'unusual',
+    categoryName: 'Необычное',
+    duration: 'long',
+    durationName: 'Весь день',
+    budget: 'low',
+    budgetName: '💰 Доступно',
+    icon: '✅'
+  },
+  {
+    id: 'date-46',
+    title: 'Ночь в необычном отеле (капсульный, на дереве)',
+    description: 'Забронируйте самое нестандартное жильё: капсулу, юрту, домик на дереве или плавучий отель.',
+    category: 'unusual',
+    categoryName: 'Необычное',
+    duration: 'long',
+    durationName: 'С ночёвкой',
+    budget: 'high',
+    budgetName: '💰💰💰 Премиум',
+    icon: '🏕️'
+  },
+  {
+    id: 'date-47',
+    title: 'Квест-комната «Побег вдвоём»',
+    description: 'Решайте загадки и головоломки вместе, чтобы выбраться из запертой комнаты за 60 минут. Командная работа!',
+    category: 'unusual',
+    categoryName: 'Необычное',
+    duration: 'short',
+    durationName: '1-2 часа',
+    budget: 'medium',
+    budgetName: '💰💰 Средне',
+    icon: '🔐'
+  },
+
+  // 🏠 Домашний уют
+  {
+    id: 'date-48',
+    title: 'Марафон TikTok-рецептов',
+    description: 'Выберите 3 вирусных рецепта из TikTok и попробуйте повторить их вместе. Снимайте процесс на видео!',
+    category: 'home',
+    categoryName: 'Домашний уют',
+    duration: 'medium',
+    durationName: '2-3 часа',
+    budget: 'low',
+    budgetName: '💰 Доступно',
+    icon: '📱'
+  },
+  {
+    id: 'date-49',
+    title: 'Вечер обмена плейлистами',
+    description: 'Каждый составляет плейлист из 10 треков, которые напоминают о партнёре. Слушайте по очереди и объясняйте выбор.',
+    category: 'home',
+    categoryName: 'Домашний уют',
+    duration: 'short',
+    durationName: '1-2 часа',
+    budget: 'free',
+    budgetName: '✨ Бесплатно',
+    icon: '🎧'
   }
 ];
